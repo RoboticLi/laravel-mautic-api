@@ -63,6 +63,7 @@ class MauticServiceProvider extends ServiceProvider
             $config  = $app[ "config" ];
             $factory = $app[ "mautic.factory" ];
 
+            dd($factory);
             dd($config);
 
             return new Mautic( $config, $factory );
