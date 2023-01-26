@@ -68,7 +68,7 @@ class MauticFactory
      */
     protected function getConfig( array $config )
     {
-        dd($config);
+        // dd($config);
         $keys = [ "clientKey", "clientSecret" ];
 
         foreach ( $keys as $key )
