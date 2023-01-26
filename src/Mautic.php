@@ -16,7 +16,7 @@ class Mautic extends AbstractManager
      *
      * @var \Mautic\Factory
      */
-    protected $factory;
+    public $factory;
 
     /**
      * Create a new Mautic manager instance.
