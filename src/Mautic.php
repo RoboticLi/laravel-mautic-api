@@ -28,7 +28,7 @@ class Mautic extends AbstractManager
      */
     public function __construct( $config, MauticFactory $factory )
     {
-        dump($config); 
+        // dump($config); 
         parent::__construct( $config );
 
         $this->factory = $factory;
