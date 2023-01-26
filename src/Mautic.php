@@ -72,19 +72,19 @@ class Mautic extends AbstractManager
      * @param null $body
      * @return mixed
      */
-    public function request($method = null, $endpoints = null, $body = null, $url = null)
+    public function request($method = null, $endpoints = null, $body = null, $mautic_domain = null)
     {
-        if ($url == null) {
+        if ($mautic_domain == null) {
             $consumer = MauticConsumer::whereNotNull("id")->orderBy("created_at", "desc")->first();
         } else {
-            $consumer = MauticConsumer::whereNotNull("id")->where('url', $url)->orderBy("created_at", "desc")->first();
+            $consumer = MauticConsumer::whereNotNull("id")->where('url', $mautic_domain)->orderBy("created_at", "desc")->first();
         }
-        
+
         $expirationStatus = $this->factory->checkExpirationTime($consumer->expires);
 
         if ($expirationStatus == true)
-            $consumer = $this->factory->refreshToken($consumer->refresh_token, $url);
+            $consumer = $this->factory->refreshToken($consumer->refresh_token, $mautic_domain);
 
-        return $this->factory->callMautic($method, $endpoints, $body, $consumer->access_token, $url);
+        return $this->factory->callMautic($method, $endpoints, $body, $consumer->access_token, $mautic_domain);
     }
 }
