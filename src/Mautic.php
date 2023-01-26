@@ -85,6 +85,6 @@ class Mautic extends AbstractManager
         if ($expirationStatus == true)
             $consumer = $this->factory->refreshToken($consumer->refresh_token, $url);
 
-        return $this->factory->callMautic($method, $endpoints, $body, $consumer->access_token);
+        return $this->factory->callMautic($method, $endpoints, $body, $consumer->access_token, $url);
     }
 }

@@ -118,9 +118,9 @@ class MauticFactory
      *
      * @return mixed
      */
-    public function callMautic($method, $endpoints, $body, $token)
+    public function callMautic($method, $endpoints, $body, $token, $mautic_domain)
     {
-        $mauticURL = $this->getMauticUrl("api/$endpoints");
+        $mauticURL = "https://".$mautic_domain."/api/$endpoints");
         $conn      = $this->getDefaultConnection();
 
         $params    = [];
