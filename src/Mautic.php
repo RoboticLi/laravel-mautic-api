@@ -79,11 +79,11 @@ class Mautic extends AbstractManager
         } else {
             $consumer = MauticConsumer::whereNotNull("id")->where('url', $url)->orderBy("created_at", "desc")->first();
         }
-        dd($consumer);
+        
         $expirationStatus = $this->factory->checkExpirationTime($consumer->expires);
 
         if ($expirationStatus == true)
-            $consumer = $this->factory->refreshToken($consumer->refresh_token);
+            $consumer = $this->factory->refreshToken($consumer->refresh_token, $url);
 
         return $this->factory->callMautic($method, $endpoints, $body, $consumer->access_token);
     }
