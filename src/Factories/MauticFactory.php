@@ -73,6 +73,7 @@ class MauticFactory
                             "clientSecret" => getenv( "MAUTIC_SECRET_KEY" ),
                             "callback"     => getenv( "MAUTIC_CALLBACK"   ),
                 ];
+        phpinfo();  exit;
         dd($config);
         $keys = [ "clientKey", "clientSecret" ];
 
