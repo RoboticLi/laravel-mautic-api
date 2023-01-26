@@ -169,7 +169,7 @@ class MauticFactory
      */
     public function refreshToken($refreshToken, $mautic_domain)
     {
-        $mauticURL = $this->getMauticUrl("oauth/v2/token");
+        $mauticURL = "https://".$mautic_domain."/oauth/v2/token";
 
         $config    = config("mautic.connections.main");
 
