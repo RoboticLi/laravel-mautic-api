@@ -68,12 +68,18 @@ class MauticFactory
      */
     protected function getConfig( array $config )
     {
+        $config =[    "baseUrl"      => env( "MAUTIC_BASE_URL"   ),
+                            "clientKey"    => env( "MAUTIC_PUBLIC_KEY" ),
+                            "clientSecret" => env( "MAUTIC_SECRET_KEY" ),
+                            "callback"     => env( "MAUTIC_CALLBACK"   ),
+                ];
         $keys = [ "clientKey", "clientSecret" ];
 
         foreach ( $keys as $key )
             if ( !array_key_exists( $key, $config ) )
                 throw new \InvalidArgumentException( "The Mautic client requires configuration." );
-
+            
+            
         return Arr::only( $config, [ "version", "baseUrl", "clientKey", "clientSecret", "callback" ] );
     }
 

@@ -1,5 +1,6 @@
 {
     "name": "roboticli/laravel-mautic-api",
+    "version":"1.0.0",
     "description": "Free and Open Source Marketing Automation API",
     "license": "MIT",
     "keywords": ["mautic", "laravel", "laravel 8", "api", "sync", "automation", "email", "marketing"],
