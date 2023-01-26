@@ -120,7 +120,7 @@ class MauticFactory
      */
     public function callMautic($method, $endpoints, $body, $token, $mautic_domain)
     {
-        $mauticURL = "https://".$mautic_domain."/api/$endpoints");
+        $mauticURL = "https://".$mautic_domain."/api/$endpoints";
         $conn      = $this->getDefaultConnection();
 
         $params    = [];
