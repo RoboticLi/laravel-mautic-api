@@ -76,13 +76,13 @@ class MauticServiceProvider extends ServiceProvider
      */
     protected function registerRoutes( Application $app )
     {
-        $app[ "router" ]->group( [
-                "namespace" => "Triibo\Mautic\Http\Controllers",
-                "prefix"    => "mautic"
-            ], function () {
-                require __DIR__ . "/Http/routes.php";
-            }
-        );
+        // $app[ "router" ]->group( [
+        //         "namespace" => "Triibo\Mautic\Http\Controllers",
+        //         "prefix"    => "mautic"
+        //     ], function () {
+        //         require __DIR__ . "/Http/routes.php";
+        //     }
+        // );
     }
 
     /**
