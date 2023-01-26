@@ -26,10 +26,10 @@ class Mautic extends AbstractManager
      *
      * @return void
      */
-    public function __construct( $config, MauticFactory $factory )
+    public function __construct($config, MauticFactory $factory)
     {
-        // dump($config); 
-        parent::__construct( $config );
+        // dd($config);
+        parent::__construct($config);
 
         $this->factory = $factory;
     }
@@ -41,9 +41,9 @@ class Mautic extends AbstractManager
      *
      * @return mixed
      */
-    protected function createConnection( array $config )
+    protected function createConnection(array $config)
     {
-        return $this->factory->make( $config );
+        return $this->factory->make($config);
     }
 
     /**
@@ -72,16 +72,19 @@ class Mautic extends AbstractManager
      * @param null $body
      * @return mixed
      */
-    public function request( $method = null, $endpoints = null, $body = null )
+    public function request($method = null, $endpoints = null, $body = null, $url = null)
     {
-        $consumer         = MauticConsumer::whereNotNull( "id" )->orderBy( "created_at", "desc" )->first();
+        if ($url == null) {
+            $consumer = MauticConsumer::whereNotNull("id")->orderBy("created_at", "desc")->first();
+        } else {
+            $consumer = MauticConsumer::whereNotNull("id")->where('url', $url)->orderBy("created_at", "desc")->first();
+        }
 
-        $expirationStatus = $this->factory->checkExpirationTime( $consumer->expires );
+        $expirationStatus = $this->factory->checkExpirationTime($consumer->expires);
 
-        if ( $expirationStatus == true )
-            $consumer = $this->factory->refreshToken( $consumer->refresh_token );
+        if ($expirationStatus == true)
+            $consumer = $this->factory->refreshToken($consumer->refresh_token);
 
-        return $this->factory->callMautic( $method, $endpoints, $body, $consumer->access_token );
+        return $this->factory->callMautic($method, $endpoints, $body, $consumer->access_token);
     }
-
 }
