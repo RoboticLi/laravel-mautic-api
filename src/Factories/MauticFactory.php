@@ -68,11 +68,6 @@ class MauticFactory
      */
     protected function getConfig( array $config )
     {
-        $config =[    "baseUrl"      => $_ENV[ "MAUTIC_BASE_URL" ],
-                            "clientKey"    => $_ENV[ "MAUTIC_PUBLIC_KEY" ],
-                            "clientSecret" => $_ENV[ "MAUTIC_SECRET_KEY" ],
-                            "callback"     => $_ENV[ "MAUTIC_CALLBACK"   ],
-                ];
         dd($config);
         $keys = [ "clientKey", "clientSecret" ];
 
