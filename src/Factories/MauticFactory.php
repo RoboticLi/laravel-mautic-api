@@ -172,7 +172,7 @@ class MauticFactory
         $mauticURL = "https://".$mautic_domain."/oauth/v2/token";
 
         $config    = config("mautic.connections.main");
-
+        dd($config);
         $client    = new Client();
 
         try {
