@@ -91,7 +91,8 @@ class Mautic extends AbstractManager
 
         if ($expirationStatus == true){ 
             // dump('expired token');
-            $consumer = $this->factory->refreshToken($consumer->refresh_token, $mautic_domain);
+            $newconsumer = $this->factory->refreshToken($consumer->refresh_token, $mautic_domain);
+            $consumer =  MauticConsumer::whereNotNull("id")->where('url', $mautic_domain)->orderBy("created_at", "desc")->first();
         }
 
         return $this->factory->callMautic($method, $endpoints, $body, $consumer->access_token, $mautic_domain);
