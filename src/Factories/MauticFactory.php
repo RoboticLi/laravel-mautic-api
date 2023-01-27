@@ -15,7 +15,7 @@ class MauticFactory
     public function getDefaultConnection()
     {
         $connectionName = config("mautic.default");
-        dump(config("mautic.connections"));
+        // dump(config("mautic.connections"));
         return config("mautic.connections.$connectionName");
     }
 
@@ -124,7 +124,7 @@ class MauticFactory
         // dump('call mautic');
         $mauticURL = "https://".$mautic_domain."/api/$endpoints";
         $conn      = $this->getDefaultConnection();
-        dd($conn);
+
         $params    = [];
 
         if (!empty($body))
