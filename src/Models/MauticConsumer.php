@@ -21,6 +21,7 @@ class MauticConsumer extends Model
      */
     protected $fillable = [
         "access_token",
+        "url",
         "expires",
         "token_type",
         "refresh_token"
