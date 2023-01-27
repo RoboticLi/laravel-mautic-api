@@ -21,9 +21,7 @@ class MauticFactory
         if ($this->_defcon) {
             return $this->_defcon;
         }
-        $connectionName = config("mautic.default");
-        // dump(config("mautic.connections"));
-        return config("mautic.connections.$connectionName");
+        return config("mautic.connections.main");
     }
 
     /**

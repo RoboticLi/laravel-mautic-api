@@ -66,6 +66,11 @@ class Mautic extends AbstractManager
         return $this->factory;
     }
 
+    public function setConfig($config)
+    {
+        $this->factory->setDefaultConnection($config);
+    }
+
     /**
      * @param null $method
      * @param null $endpoints
