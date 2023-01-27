@@ -124,7 +124,7 @@ class MauticFactory
         // dump('call mautic');
         $mauticURL = "https://".$mautic_domain."/api/$endpoints";
         $conn      = $this->getDefaultConnection();
-
+        dd($conn);
         $params    = [];
 
         if (!empty($body))
