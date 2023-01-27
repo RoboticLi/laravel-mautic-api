@@ -15,7 +15,7 @@ class MauticFactory
     public function getDefaultConnection()
     {
         $connectionName = config("mautic.default");
-
+        dump(config("mautic.connections"));
         return config("mautic.connections.$connectionName");
     }
 
