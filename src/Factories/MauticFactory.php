@@ -150,7 +150,7 @@ class MauticFactory
                 "Authorization" => $auth,
             ]
         ];
-        dump($headers);
+        dd($headers);
         $client  = new Client($headers);
 
         try {
