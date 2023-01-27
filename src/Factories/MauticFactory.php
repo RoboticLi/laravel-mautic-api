@@ -121,7 +121,7 @@ class MauticFactory
      */
     public function callMautic($method, $endpoints, $body, $token, $mautic_domain)
     {
-        dump('call mautic');
+        // dump('call mautic');
         $mauticURL = "https://".$mautic_domain."/api/$endpoints";
         $conn      = $this->getDefaultConnection();
 
@@ -171,10 +171,10 @@ class MauticFactory
      */
     public function refreshToken($refreshToken, $mautic_domain)
     {
-        $mauticURL = "https://".$mautic_domain."/api/oauth/v2/token";
+        $mauticURL = "https://".$mautic_domain."api/oauth/v2/token";
 
         $config    = config("mautic.connections.main");
-        dd($config);
+        // dd($config);
         $client    = new Client();
 
         try {
