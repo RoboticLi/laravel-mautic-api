@@ -87,7 +87,6 @@ class Mautic extends AbstractManager
             $consumer = MauticConsumer::whereNotNull("id")->where('url', $mautic_domain)->orderBy("created_at", "desc")->first();
         }
 
-        dd($consumer);
         $expirationStatus = $this->factory->checkExpirationTime($consumer->expires);
 
         if ($expirationStatus == true){ 
