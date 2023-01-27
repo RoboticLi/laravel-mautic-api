@@ -68,7 +68,8 @@ class MauticFactory
      */
     protected function getConfig(array $config)
     {
-        // dd($config);
+        dump('getting config');
+        dump($config);
         $keys = ["clientKey", "clientSecret"];
 
         foreach ($keys as $key)
@@ -120,6 +121,7 @@ class MauticFactory
      */
     public function callMautic($method, $endpoints, $body, $token, $mautic_domain)
     {
+        dump('call mautic');
         $mauticURL = "https://".$mautic_domain."/api/$endpoints";
         $conn      = $this->getDefaultConnection();
 
@@ -169,7 +171,7 @@ class MauticFactory
      */
     public function refreshToken($refreshToken, $mautic_domain)
     {
-        $mauticURL = "https://".$mautic_domain."/oauth/v2/token";
+        $mauticURL = "https://".$mautic_domain."/api/oauth/v2/token";
 
         $config    = config("mautic.connections.main");
         dd($config);

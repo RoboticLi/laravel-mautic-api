@@ -82,8 +82,10 @@ class Mautic extends AbstractManager
 
         $expirationStatus = $this->factory->checkExpirationTime($consumer->expires);
 
-        if ($expirationStatus == true)
+        if ($expirationStatus == true){ 
+            dump('expired token');
             $consumer = $this->factory->refreshToken($consumer->refresh_token, $mautic_domain);
+        }
 
         return $this->factory->callMautic($method, $endpoints, $body, $consumer->access_token, $mautic_domain);
     }
