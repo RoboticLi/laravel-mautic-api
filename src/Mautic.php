@@ -82,14 +82,12 @@ class Mautic extends AbstractManager
     {
         if ($mautic_domain == null) {
             // raise exception 'mautic domain is required'':
-            dd('Mautic domain is required');
-            return false;
             $consumer = MauticConsumer::whereNotNull("id")->orderBy("created_at", "desc")->first();
         } else {
             $consumer = MauticConsumer::whereNotNull("id")->where('url', $mautic_domain)->orderBy("created_at", "desc")->first();
         }
 
-        // dump($consumer);
+        dd($consumer);
         $expirationStatus = $this->factory->checkExpirationTime($consumer->expires);
 
         if ($expirationStatus == true){ 
