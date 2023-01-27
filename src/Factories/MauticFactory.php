@@ -176,8 +176,7 @@ class MauticFactory
     {
         // $mauticURL = "https://".$mautic_domain."api/oauth/v2/token";
         $mauticURL = $this->getMauticUrl('oauth/v2/token');
-        $config    = config("mautic.connections.main");
-        // dd($config);
+        $config    = $this->_defcon;
         $client    = new Client();
 
         try {
