@@ -11,9 +11,16 @@ use GuzzleHttp\Exception\ClientException;
 
 class MauticFactory
 {
+    protected $_defcon = null;
 
+    public function setDefaultConnection($config) {
+        $this->_defcon = $config;
+    }
     public function getDefaultConnection()
     {
+        if ($this->_defcon) {
+            return $this->_defcon;
+        }
         $connectionName = config("mautic.default");
         // dump(config("mautic.connections"));
         return config("mautic.connections.$connectionName");
@@ -68,8 +75,6 @@ class MauticFactory
      */
     protected function getConfig(array $config)
     {
-        dump('getting config');
-        dd($config);
         $keys = ["clientKey", "clientSecret"];
 
         foreach ($keys as $key)
@@ -122,7 +127,7 @@ class MauticFactory
     public function callMautic($method, $endpoints, $body, $token, $mautic_domain)
     {
         // dump('call mautic');
-        $mauticURL = "https://".$mautic_domain."/api/$endpoints";
+        $mauticURL = $this->getMauticUrl( "api/$endpoints" );
         $conn      = $this->getDefaultConnection();
 
         $params    = [];
