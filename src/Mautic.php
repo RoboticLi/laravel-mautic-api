@@ -2,6 +2,7 @@
 
 namespace Triibo\Mautic;
 
+use Exception;
 use Mautic\Auth\OAuthClient;
 use Triibo\Mautic\Models\MauticConsumer;
 use Triibo\Mautic\Factories\MauticFactory;
@@ -80,6 +81,9 @@ class Mautic extends AbstractManager
     public function request($method = null, $endpoints = null, $body = null, $mautic_domain = null)
     {
         if ($mautic_domain == null) {
+            // raise exception 'mautic domain is required'':
+            dd('Mautic domain is required');
+            return false;
             $consumer = MauticConsumer::whereNotNull("id")->orderBy("created_at", "desc")->first();
         } else {
             $consumer = MauticConsumer::whereNotNull("id")->where('url', $mautic_domain)->orderBy("created_at", "desc")->first();
